@@ -3,6 +3,7 @@ Base Framework With Dagger2+Butterknife+Retrofit2+MVP Of Android App develop
 说明：本项目使用了MVP框架；
 接口格式说明：
 
+``` javascript
 {
   "success": true,
   "error": [
@@ -22,3 +23,4 @@ Base Framework With Dagger2+Butterknife+Retrofit2+MVP Of Android App develop
     "has_open": "opened"
   }
 }
+```
