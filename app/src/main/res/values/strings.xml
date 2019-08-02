@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Android-Project-Framwork</string>
-    <string name="api_url">http://service.vipkeeper.com/</string>
+    <string name="api_url">http://api.xxx.com/</string>
 </resources>
