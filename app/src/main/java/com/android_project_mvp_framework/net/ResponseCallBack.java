@@ -1,9 +1,4 @@
 package com.android_project_mvp_framework.net;
-
-import com.android_project_mvp_framework.bean.ErrorBean;
-
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,14 +14,10 @@ public abstract class ResponseCallBack<T extends ResponseResult> implements Call
         int code = response.raw().code();
 
         if (code == 200){
-            if (t.isSuccess()){
+            if (t.getCd() == 0){
                 onSuccess(t);
             }else {
-                if (t.getError() != null && t.getError().size() != 0) {
-                    onFailure(((ErrorBean) t.getError().get(0)).getMsg());
-                }else {
-                    onFailure("参数错误");
-                }
+                onFailure(t.getMsg());
             }
         }else {
             onNoResponse(code,response.message());

@@ -1,13 +1,14 @@
 package com.android_project_mvp_framework.mvp.login.presenter;
 
-import com.android_project_mvp_framework.bean.ErrorBean;
 import com.android_project_mvp_framework.bean.LoginBean;
-import com.android_project_mvp_framework.mvp.login.module.ILoginModule;
-import com.android_project_mvp_framework.mvp.login.module.LoginModuleImpl;
+import com.android_project_mvp_framework.mvp.IView;
+import com.android_project_mvp_framework.mvp.login.model.ILoginModel;
+import com.android_project_mvp_framework.mvp.login.model.LoginModelImpl;
 import com.android_project_mvp_framework.mvp.login.view.ILoginView;
 import com.android_project_mvp_framework.net.ResponseResult;
+import com.android_project_mvp_framework.service.ApiService;
 
-import java.util.List;
+import javax.inject.Inject;
 
 /**
  * Created by xiaolong.wei on 2017/9/29.
@@ -15,18 +16,16 @@ import java.util.List;
 
 public class LoginPresenterImpl implements ILoginPresenter,CallBack{
     private ILoginView mILoginView;
-    private ILoginModule mILoginModule;
 
-
-    public LoginPresenterImpl(ILoginView mILoginView) {
-        this.mILoginView = mILoginView;
-        mILoginModule = new LoginModuleImpl();
-    }
+    @Inject
+    ILoginModel mILoginModel;
+    @Inject
+    public LoginPresenterImpl() {}
 
     @Override
     public void login(String username,String password) {
         mILoginView.showProgress();
-        mILoginModule.login(username,password,this);
+        mILoginModel.login(username,password,this);
     }
 
     @Override
@@ -45,5 +44,10 @@ public class LoginPresenterImpl implements ILoginPresenter,CallBack{
     public void onFailure(String s) {
         mILoginView.showToast(s);
         mILoginView.hideProgress();
+    }
+
+    @Override
+    public void attachView(IView iView) {
+        this.mILoginView = ((ILoginView) iView);
     }
 }

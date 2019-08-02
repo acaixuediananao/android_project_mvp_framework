@@ -1,9 +1,11 @@
-package com.android_project_mvp_framework.module;
+package com.android_project_mvp_framework.di.module;
 
+import android.content.Context;
+
+import com.android_project_mvp_framework.R;
 import com.android_project_mvp_framework.net.LoggingInterceptor;
 
 import java.util.concurrent.TimeUnit;
-
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -16,11 +18,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class NetWorkModule {
-
     @Provides
-    Retrofit provideRetrofit(OkHttpClient client){
+    Retrofit provideRetrofit(Context context ,OkHttpClient client){
+        String apiUrl = context.getResources().getString(R.string.api_url);
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.1.36.118:18080/zrcf-site/")
+                .baseUrl(apiUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

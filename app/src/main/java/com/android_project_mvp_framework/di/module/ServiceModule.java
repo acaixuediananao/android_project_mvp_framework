@@ -1,4 +1,4 @@
-package com.android_project_mvp_framework.module;
+package com.android_project_mvp_framework.di.module;
 
 import com.android_project_mvp_framework.service.ApiService;
 

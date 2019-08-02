@@ -17,10 +17,10 @@ import retrofit2.http.POST;
 
 public interface ApiService {
 
-    @GET("account/membership/exchange")
+    @GET("housekeeper/loogin")
     Call<DataBean> getData(@Header("t") String t);
 
     @FormUrlEncoded
-    @POST("login")
-    Call<ResponseResult<LoginBean>> login(@Field("accname") String accname, @Field("password") String password , @Field("t") String t);
+    @POST("housekeeper/login")
+    Call<ResponseResult<LoginBean>> login(@Field("phone") String phone, @Field("passwd") String passwd , @Field("registration_id") String registration_id);
 }

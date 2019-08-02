@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name="com.android_project_mvp_framework.AndroidApplication">
-        <activity android:name="com.android_project_mvp_framework.MainActivity">
-
-        </activity>
         <activity android:name="com.android_project_mvp_framework.mvp.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".mvp.register.RegisterActivity"></activity>
     </application>
 
 </manifest>
