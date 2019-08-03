@@ -7,7 +7,9 @@ import dagger.android.support.DaggerApplication;
 
 
 /**
- * Created by xiaolong.wei on 2017/9/14.
+ *
+ * @author xiaolong.wei
+ * @date 2017/9/14
  */
 
 public class AndroidApplication extends DaggerApplication {

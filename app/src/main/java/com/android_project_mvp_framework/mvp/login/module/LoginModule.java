@@ -1,22 +1,21 @@
 package com.android_project_mvp_framework.mvp.login.module;
 
 import com.android_project_mvp_framework.di.ActivitySocped;
-import com.android_project_mvp_framework.mvp.login.model.ILoginModel;
-import com.android_project_mvp_framework.mvp.login.model.LoginModelImpl;
-import com.android_project_mvp_framework.mvp.login.presenter.ILoginPresenter;
-import com.android_project_mvp_framework.mvp.login.presenter.LoginPresenterImpl;
+import com.android_project_mvp_framework.mvp.login.LoginContract;
+import com.android_project_mvp_framework.mvp.login.LoginModelImpl;
+import com.android_project_mvp_framework.mvp.login.LoginPresenterImpl;
 
 import dagger.Binds;
 import dagger.Module;
 
 @Module
-public abstract class LoginModule {
+public abstract class LoginModule{
 
     @Binds
     @ActivitySocped
-    abstract ILoginPresenter iLoginPresenter(LoginPresenterImpl loginPresenter);
+    abstract LoginContract.ILoginPresenter iLoginPresenter(LoginPresenterImpl loginPresenter);
 
     @Binds
     @ActivitySocped
-    abstract ILoginModel iLoginModel(LoginModelImpl loginModel);
+    abstract LoginContract.ILoginModel iLoginModel(LoginModelImpl loginModel);
 }

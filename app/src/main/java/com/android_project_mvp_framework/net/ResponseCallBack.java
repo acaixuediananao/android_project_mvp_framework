@@ -1,13 +1,26 @@
 package com.android_project_mvp_framework.net;
+
+import javax.inject.Inject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by xiaolong.wei on 2017/9/18.
+ *
+ * @author xiaolong.wei
+ * @date 2017/9/18
  */
 
-public abstract class ResponseCallBack<T extends ResponseResult> implements Callback<T> {
+public  class ResponseCallBack<T extends ResponseResult> implements Callback<T> {
+    CallBack callBack;
+    @Inject
+    public ResponseCallBack() {}
+
+    public void setCallBack(CallBack callBack){
+        this.callBack = callBack;
+    }
+
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
         T t = ((T) response.body());
@@ -15,25 +28,18 @@ public abstract class ResponseCallBack<T extends ResponseResult> implements Call
 
         if (code == 200){
             if (t.getCd() == 0){
-                onSuccess(t);
+                callBack.onSuccess(t.getData());
             }else {
-                onFailure(t.getMsg());
+                callBack.onFailure(t.getMsg());
             }
         }else {
-            onNoResponse(code,response.message());
+            callBack.onNoResponse(code,response.message());
         }
     }
 
     @Override
     public void onFailure(Call<T> call, Throwable t) {
-        onFailure(t.getMessage());
+        callBack.onFailure(t.getMessage());
     }
-
-
-    public abstract  void onSuccess(T t);
-
-    public abstract void onFailure(String s);
-
-    public abstract void onNoResponse(int code , String msg);
 
 }

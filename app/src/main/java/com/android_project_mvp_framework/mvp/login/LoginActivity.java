@@ -11,20 +11,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android_project_mvp_framework.R;
+import com.android_project_mvp_framework.base.BaseActivity;
 import com.android_project_mvp_framework.bean.LoginBean;
-import com.android_project_mvp_framework.mvp.login.presenter.LoginPresenterImpl;
-import com.android_project_mvp_framework.mvp.login.view.ILoginView;
 import com.android_project_mvp_framework.mvp.register.RegisterActivity;
 import com.android_project_mvp_framework.service.ApiService;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import dagger.android.support.DaggerAppCompatActivity;
 
-public class LoginActivity extends DaggerAppCompatActivity implements ILoginView{
+public class LoginActivity extends BaseActivity implements LoginContract.ILoginView{
     @BindView(R.id.text)
     TextView textView;
     @Inject
@@ -43,26 +40,23 @@ public class LoginActivity extends DaggerAppCompatActivity implements ILoginView
     ProgressBar progressBar;
 
     @Inject
-    LoginPresenterImpl mLoginPresenterImpl;
-
+    LoginContract.ILoginPresenter mLoginPresenterImpl;
 
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity);
-        ButterKnife.bind(this);
-        initData();
+    public int getLayoutId() {
+        return R.layout.login_activity;
     }
 
-    private void initData(){
+    @Override
+    public void init(){
         mLoginPresenterImpl.attachView(this);
     }
 
 
     @OnClick({R.id.login, R.id.register})
-    public void onViewClicked(View view) {
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.login:
                 mLoginPresenterImpl.login(getUserName(),getPassword());
@@ -75,9 +69,7 @@ public class LoginActivity extends DaggerAppCompatActivity implements ILoginView
     }
 
     @Override
-    public void showProgress() {
-        progressBar.setVisibility(View.VISIBLE);
-    }
+    public void showProgress() { progressBar.setVisibility(View.VISIBLE); }
 
     @Override
     public void hideProgress() {
@@ -99,8 +91,4 @@ public class LoginActivity extends DaggerAppCompatActivity implements ILoginView
         textView.setText(loginBean.getTicket());
     }
 
-    @Override
-    public void showToast(String msg) {
-        Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
-    }
 }

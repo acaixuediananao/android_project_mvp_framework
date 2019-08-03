@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.android_project_mvp_framework.R;
 import com.android_project_mvp_framework.net.LoggingInterceptor;
+import com.android_project_mvp_framework.net.ResponseCallBack;
 
 import java.util.concurrent.TimeUnit;
 import dagger.Module;

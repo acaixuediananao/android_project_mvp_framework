@@ -2,7 +2,9 @@ package com.android_project_mvp_framework.net;
 import java.io.Serializable;
 
 /**
- * Created by xiaolong.wei on 2017/9/18.
+ *
+ * @author xiaolong.wei
+ * @date 2017/9/18
  */
 
 public class ResponseResult<T>  implements Serializable{
