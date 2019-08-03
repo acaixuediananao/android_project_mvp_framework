@@ -5,22 +5,24 @@ Base Framework With Dagger2+Butterknife+Retrofit2+MVP Of Android App develop
 
 ``` javascript
 {
-  "success": true,
-  "error": [
-        {
-            msg:"xxx",
-            code:-1
-        },
-        {
-            msg:"xxx",
-            code:-2
-        }
-  ],
-  "data": {
-    "t": "t",
-    "ticket": "1483abc92ac37198042b527e7667e0ff",
-    "has_invest": "invested",
-    "has_open": "opened"
-  }
+    "cd": 0,
+    "msg": "正常",
+    "data": {
+        "userId": 154,
+        "userType": "User",
+        "deviceId": 0,
+        "ticket": "xxx",
+        "account": null,
+        "appId": 0,
+        "accountOrigin": 0,
+        "thirdPartyToken": null,
+        "createTime": 0,
+        "userSecretKey": null,
+        "uuid": null,
+        "easemob_kefu_name": "xxx",
+        "easemob_kefu_pwd": "xxx",
+        "productKey": null,
+        "role": 1
+    }
 }
 ```
