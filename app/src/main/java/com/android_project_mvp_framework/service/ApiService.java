@@ -3,6 +3,7 @@ package com.android_project_mvp_framework.service;
 import com.android_project_mvp_framework.bean.LoginBean;
 import com.android_project_mvp_framework.net.ResponseResult;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -14,7 +15,12 @@ import retrofit2.http.POST;
 
 public interface ApiService {
 
+//    @FormUrlEncoded
+//    @POST("housekeeper/login")
+//    Call<ResponseResult<LoginBean>> login(@Field("phone") String phone, @Field("passwd") String passwd , @Field("registration_id") String registration_id);
+
+
     @FormUrlEncoded
     @POST("housekeeper/login")
-    Call<ResponseResult<LoginBean>> login(@Field("phone") String phone, @Field("passwd") String passwd , @Field("registration_id") String registration_id);
+    public Observable<ResponseResult<LoginBean>> login(@Field("phone") String phone, @Field("passwd") String passwd , @Field("registration_id") String registration_id);
 }

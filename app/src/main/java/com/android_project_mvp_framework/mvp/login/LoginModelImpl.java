@@ -1,12 +1,17 @@
 package com.android_project_mvp_framework.mvp.login;
 
+import android.util.Log;
+
 import com.android_project_mvp_framework.bean.LoginBean;
 import com.android_project_mvp_framework.net.CallBack;
-import com.android_project_mvp_framework.net.ResponseCallBack;
+//import com.android_project_mvp_framework.net.ResponseCallBack;
 import com.android_project_mvp_framework.net.ResponseResult;
+import com.android_project_mvp_framework.net.RxRequestCallBack;
 import com.android_project_mvp_framework.service.ApiService;
 
 import javax.inject.Inject;
+
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  *
@@ -16,21 +21,27 @@ import javax.inject.Inject;
 
 public class LoginModelImpl implements LoginContract.ILoginModel{
 
+    private static final String TAG = "LoginModelImpl";
+
+    @Inject
+    CompositeDisposable mDisposableContainer;
     @Inject
     ApiService apiService;
     @Inject
-    ResponseCallBack<ResponseResult<LoginBean>> responseCallBack;
+    RxRequestCallBack<ResponseResult<LoginBean>> rxRequestObservable;
 
     @Inject
-    public LoginModelImpl() {}
-
-    @Override
-    public void login(String username, String password) {
-        apiService.login(username,password,"999").enqueue(responseCallBack);
+    public LoginModelImpl() {
     }
 
     @Override
-    public void setCallBack(CallBack callBack) {
-        responseCallBack.setCallBack(callBack);
+    public void login(String username, String password,String registrationId,CallBack callBack) {
+        mDisposableContainer.add(rxRequestObservable.createRequest(apiService.login(username,password,registrationId),callBack));
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.d(TAG, "onDestroy: ------------mDisposableContainer.clear()");
+        mDisposableContainer.clear();
     }
 }

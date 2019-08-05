@@ -4,7 +4,8 @@ import android.content.Context;
 
 import com.android_project_mvp_framework.AndroidApplication;
 import com.android_project_mvp_framework.di.module.NetWorkModule;
-import com.android_project_mvp_framework.di.module.ResponseCallBackModule;
+//import com.android_project_mvp_framework.di.module.ResponseCallBackModule;
+import com.android_project_mvp_framework.di.module.RxAndroidModule;
 import com.android_project_mvp_framework.di.module.ServiceModule;
 
 import javax.inject.Singleton;
@@ -20,7 +21,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
         NetWorkModule.class,
         BindActivityModule.class,
         ServiceModule.class,
-        ResponseCallBackModule.class
+        RxAndroidModule.class
 })
 public interface AppComponent extends AndroidInjector<AndroidApplication> {
 

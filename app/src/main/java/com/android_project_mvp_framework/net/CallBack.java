@@ -1,9 +1,5 @@
 package com.android_project_mvp_framework.net;
 
-import com.android_project_mvp_framework.bean.LoginBean;
-import com.android_project_mvp_framework.net.ResponseResult;
-
-
 /**
  *
  * @author xiaolong.wei

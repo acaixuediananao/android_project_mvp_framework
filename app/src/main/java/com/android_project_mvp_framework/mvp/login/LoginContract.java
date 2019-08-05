@@ -4,7 +4,11 @@ import com.android_project_mvp_framework.bean.LoginBean;
 import com.android_project_mvp_framework.base.IModel;
 import com.android_project_mvp_framework.base.IPresenter;
 import com.android_project_mvp_framework.base.IView;
+import com.android_project_mvp_framework.net.CallBack;
 
+/**
+ * @author xiaolong.wei
+ */
 public interface LoginContract {
 
     public interface ILoginView extends IView {
@@ -20,6 +24,6 @@ public interface LoginContract {
     }
 
     public interface ILoginModel extends IModel {
-        void login(String username, String password);
+        void login(String username, String password, String registrationId, CallBack callBack);
     }
 }

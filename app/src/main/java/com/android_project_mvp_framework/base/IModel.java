@@ -8,5 +8,5 @@ import com.android_project_mvp_framework.net.CallBack;
 
 public interface IModel {
 
-    void setCallBack(CallBack callBack);
+    void onDestroy();
 }

@@ -1,14 +1,12 @@
 package com.android_project_mvp_framework.mvp.login;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.constraint.Guideline;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android_project_mvp_framework.R;
 import com.android_project_mvp_framework.base.BaseActivity;
@@ -21,11 +19,12 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * @author xiaolong.wei
+ */
 public class LoginActivity extends BaseActivity implements LoginContract.ILoginView{
     @BindView(R.id.text)
     TextView textView;
-    @Inject
-    ApiService authService;
     @BindView(R.id.login)
     Button login;
     @BindView(R.id.guideline)
@@ -89,6 +88,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.ILoginV
     @Override
     public void setDate(LoginBean loginBean) {
         textView.setText(loginBean.getTicket());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mLoginPresenterImpl.onDestroy();
     }
 
 }

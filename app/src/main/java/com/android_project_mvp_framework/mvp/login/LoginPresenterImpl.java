@@ -2,12 +2,13 @@ package com.android_project_mvp_framework.mvp.login;
 
 import com.android_project_mvp_framework.bean.LoginBean;
 import com.android_project_mvp_framework.net.CallBack;
-import com.android_project_mvp_framework.net.ResponseResult;
 
 import javax.inject.Inject;
 
 /**
- * Created by xiaolong.wei on 2017/9/29.
+ *
+ * @author xiaolong.wei
+ * @date 2017/9/29
  */
 
 public class LoginPresenterImpl implements LoginContract.ILoginPresenter, CallBack<LoginBean> {
@@ -21,8 +22,7 @@ public class LoginPresenterImpl implements LoginContract.ILoginPresenter, CallBa
     @Override
     public void login(String username,String password) {
         mILoginView.showProgress();
-        mILoginModel.setCallBack(this);
-        mILoginModel.login(username,password);
+        mILoginModel.login(username,password,"",this);
     }
 
     @Override
@@ -48,4 +48,8 @@ public class LoginPresenterImpl implements LoginContract.ILoginPresenter, CallBa
         mILoginView.hideProgress();
     }
 
+    @Override
+    public void onDestroy() {
+        mILoginModel.onDestroy();
+    }
 }
