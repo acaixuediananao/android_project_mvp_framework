@@ -1,11 +1,7 @@
 package com.android_project_mvp_framework.di.module;
 
-import com.android_project_mvp_framework.di.ActivitySocped;
-
-import javax.annotation.Signed;
 import javax.inject.Singleton;
 
-import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
